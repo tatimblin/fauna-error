@@ -9,16 +9,15 @@ const triggerLogin = document.getElementById('login');
 triggerUserByAccount.addEventListener('click', () => {
   console.log('userByAccount() initiated');
   faunaQueries
-    .userByAccount('tatimblin@gmail.com')
+    .userByAccount('tess@email.com')
     .then(res => console.log(res))
     .catch(err => console.log(err))
 });
 
 triggerLogin.addEventListener('click', () => {
-  console.log(process.env.VUE_APP_FAUNADB_TEST_KEY);
   console.log('login() initiated');
   faunaQueries
-    .userByAccount('tatimblin@gmail.com', 'Lupineden01$')
+    .userByAccount('tess@email.com', 'TestTest')
     .then(res => console.log(res))
     .catch(err => console.log(err))
 });
