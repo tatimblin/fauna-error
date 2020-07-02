@@ -15,6 +15,7 @@ triggerUserByAccount.addEventListener('click', () => {
 });
 
 triggerLogin.addEventListener('click', () => {
+  console.log(process.env.VUE_APP_FAUNADB_TEST_KEY);
   console.log('login() initiated');
   faunaQueries
     .userByAccount('tatimblin@gmail.com', 'Lupineden01$')
