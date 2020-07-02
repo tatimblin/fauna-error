@@ -5,18 +5,12 @@ import {
   loginUser,
 } from './queries.js';
 
-/* Initialize the client to contact FaunaDB
- * The client is initially started with the a 'BOOTSTRAP' token.
- * This token has only two permissions, call the 'login' and 'register' User Defined Function (UDF)
- * If the login function succeeds, it will return a new token with elevated permission.
- * The client will then be replaced with a client that uses the secret that was returned by Login.
- */
-
 class QueryManager {
   constructor(token) {
-    // A client is just a wrapper, it does not create a persitant connection
-    // FaunaDB behaves like an API and will include the token on each request.
-    this.bootstrapToken = token || process.env.FAUNADB_TEST_KEY;
+    // dotenv currently isn't accessible outside webpack config for
+    // some reason. I gave up trying to figure thos out because you
+    // can just put the api key in the next line. :(
+    this.bootstrapToken = token || process.env.FAUNADB_TEST_KEY; // <-- add key here
     this.client = new faunadb.Client({
       secret: token || this.bootstrapToken,
     });
